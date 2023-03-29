@@ -5,7 +5,7 @@ import Button from 'react-bootstrap/Button';
 
 const Home = () => {
   return (
-    <div className='container text-center '>
+    <div>
       <Cabecalho />
       <h1 >Hello World</h1>
       <Button variant="primary">Primary</Button>
