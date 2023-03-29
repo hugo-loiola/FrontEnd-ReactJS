@@ -1,13 +1,10 @@
 import React from "react";
+import Cabecalho from "../components/Cabecalho";
 
 const Home = () => {
   return (
     <div>
-      <h1>Hello World!</h1>
-      <h1>Hello World!</h1>
-      <h1>Hello World!</h1>
-      <h1>Hello World!</h1>
-      <h1>Hello World!</h1>
+      <Cabecalho />
     </div>
   );
 };
