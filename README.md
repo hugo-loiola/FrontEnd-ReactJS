@@ -8,6 +8,10 @@
 
     npm run dev
 
+### Axios para API
+
+    npm i axios
+
 ### Base do código
 
 ```jsx
