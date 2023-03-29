@@ -1,1 +1,5 @@
-# Repositório para aula de Front End com ReactJS
+# ReactJS
+
+### Criar um projeto
+
+    npx create-next-app@latest nome-projeto
