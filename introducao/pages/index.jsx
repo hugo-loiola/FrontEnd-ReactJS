@@ -5,6 +5,7 @@ const Home = () => {
   return (
     <div>
       <Cabecalho />
+      <h1>Hello World</h1>
     </div>
   );
 };

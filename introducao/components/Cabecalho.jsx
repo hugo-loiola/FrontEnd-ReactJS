@@ -2,7 +2,10 @@ import React from 'react'
 
 const Cabecalho = () => {
   return (
-    <div>Cabeçalho</div>
+    <div>
+      <a>Cabeçalho</a>
+      <h1>Cabeçalho</h1>
+    </div>
   )
 }
 
