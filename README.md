@@ -4,6 +4,10 @@
 
     npx create-next-app@latest nome-projeto
 
+### Instalar o bootstrap
+
+    npm install react-bootstrap bootstrap
+
 ### Iniciar o projeto
 
     npm run dev
