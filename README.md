@@ -9,16 +9,48 @@
     npm run dev
 
 ### Base do código
+
 ```jsx
-import React from 'react'
+import React from "react";
 
 const index = () => {
-  return (
-    <div>index</div>
-  )
-}
+  return <div>index</div>;
+};
 
-export default index
-
+export default index;
 ```
-* rafce
+
+- rafce
+
+### Componentes
+
+- pages/index.jsx
+
+```jsx
+import React from "react";
+import Cabecalho from "../components/Cabecalho";
+
+const Home = () => {
+  return (
+    <div>
+      <Cabecalho />
+    </div>
+  );
+};
+
+export default Home;
+```
+
+---
+
+- componentes/Cabecalho.jsx
+
+```jsx
+import React from "react";
+
+const Cabecalho = () => {
+  return <div>Cabeçalho</div>;
+};
+
+export default Cabecalho;
+```
