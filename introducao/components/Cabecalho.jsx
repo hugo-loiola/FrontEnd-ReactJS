@@ -8,7 +8,7 @@ const Cabecalho = () => {
     <div>
       <Navbar bg="dark" variant="dark">
         <Container>
-          <Navbar.Brand href="#home">Navbar</Navbar.Brand>
+          <Navbar.Brand href="./">Início</Navbar.Brand>
           <Nav className="me-auto">
             <Nav.Link href="./array">Array</Nav.Link>
             <Nav.Link href="#features">Features</Nav.Link>
