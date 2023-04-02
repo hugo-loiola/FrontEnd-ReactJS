@@ -8,13 +8,13 @@
 
     npm install react-bootstrap bootstrap
 
-### Iniciar o projeto
-
-    npm run dev
-
 ### Axios para API
 
     npm i axios
+
+### Iniciar o projeto
+
+    npm run dev
 
 ### Base do código
 
