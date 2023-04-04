@@ -5,7 +5,9 @@ import Pagina from "../components/Pagina";
 const array = () => {
   return (
     <>
-      <Pagina titulo="Array" />
+      <Pagina titulo="Array">
+        <div>Arrays</div>
+      </Pagina>
     </>
   );
 };

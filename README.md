@@ -62,3 +62,51 @@ const Cabecalho = () => {
 
 export default Cabecalho;
 ```
+
+### Componentes com Props
+
+- #### Componente pai
+
+```jsx
+const Pagina = (props) => {
+  return (
+    <>
+      <Cabecalho />
+      <div className="bg-secondary py-3 text-white text-center mb-3">
+        <Container>
+          <h1>{props.titulo}</h1>
+        </Container>
+      </div>
+
+      {props.children}
+
+      <div
+        style={{ width: "100%" }}
+        className="bg-secondary position-fixed bottom-0 py-3 text-white text-center"
+      >
+        <p>Todos os direitos reservados®</p>
+      </div>
+    </>
+  );
+};
+```
+
+- #### Componente filho
+
+```jsx
+const Home = () => {
+  return (
+    <>
+      <Pagina titulo="Página Inicial">
+        <Container>
+          <h1>Hello World</h1>
+          <li>1</li>
+          <li>2</li>
+          <li>3</li>
+          <li>4</li>
+        </Container>
+      </Pagina>
+    </>
+  );
+};
+```
