@@ -5,7 +5,7 @@ import Pagina from "../components/Pagina";
 const Home = () => {
   return (
     <>
-      <Pagina titulo="Página Inicial" />
+      <Pagina titulo="Página Inicial"></Pagina>
     </>
   );
 };
