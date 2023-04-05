@@ -11,11 +11,11 @@ const array = () => {
       <Pagina titulo="Array">
         <Container>
           <h2>Lista Ordenada</h2>
-          {carros.map((carro, index) => (
-            <p key={index}>
-              {index + 1}.{carro}
-            </p>
-          ))}
+          <ol>
+            {carros.map((carro, index) => (
+              <li key={index}>{carro}</li>
+            ))}
+          </ol>
         </Container>
       </Pagina>
     </>
