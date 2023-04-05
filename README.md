@@ -110,3 +110,11 @@ const Home = () => {
   );
 };
 ```
+
+### Map
+
+```jsx
+{
+  carros.map((carro, index) => <p key={index}>{carro}</p>);
+}
+```
