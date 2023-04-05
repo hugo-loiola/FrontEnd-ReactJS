@@ -10,8 +10,11 @@ const array = () => {
     <>
       <Pagina titulo="Array">
         <Container>
+          <h2>Lista Ordenada</h2>
           {carros.map((carro, index) => (
-            <p key={index}>{carro}</p>
+            <p key={index}>
+              {index + 1}.{carro}
+            </p>
           ))}
         </Container>
       </Pagina>
