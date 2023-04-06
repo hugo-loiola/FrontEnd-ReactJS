@@ -9,14 +9,12 @@ const array = () => {
   return (
     <>
       <Pagina titulo="Array">
-        <Container>
-          <h2>Lista Ordenada</h2>
-          <ol>
-            {carros.map((carro, index) => (
-              <li key={index}>{carro}</li>
-            ))}
-          </ol>
-        </Container>
+        <h2>Lista Ordenada</h2>
+        <ol>
+          {carros.map((carro, index) => (
+            <li key={index}>{carro}</li>
+          ))}
+        </ol>
       </Pagina>
     </>
   );

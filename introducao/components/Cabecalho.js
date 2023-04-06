@@ -15,6 +15,7 @@ const Cabecalho = () => {
             <Nav className="me-auto">
               <Nav.Link href="/array">Array</Nav.Link>
               <Nav.Link href="/objeto">Objeto</Nav.Link>
+              <Nav.Link href="/carro">Carro</Nav.Link>
             </Nav>
           </Navbar.Collapse>
         </Container>
