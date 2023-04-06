@@ -12,9 +12,8 @@ const Pagina = (props) => {
           <h1>{props.titulo}</h1>
         </Container>
       </div>
+      <Container className="mb-5 pb-3">{props.children}</Container>
 
-      {props.children}
-      
       <div
         style={{ width: "100%" }}
         className="bg-secondary position-fixed bottom-0 py-3 text-white text-center"
