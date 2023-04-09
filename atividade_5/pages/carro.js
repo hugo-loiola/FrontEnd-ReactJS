@@ -63,7 +63,7 @@ const objeto = () => {
                 <Card.Text>
                   Ano: <strong>{carro.ano}</strong>
                 </Card.Text>
-                <Button variant="danger">Detalhes</Button>
+                <Button variant="primary">Detalhes</Button>
               </Card.Body>
             </Card>
           </Col>
