@@ -1,136 +1,32 @@
-# ReactJS
+# Atividade 6
 
-### Criar um projeto
+Boa noite, turma,
 
-    npx create-next-app@latest nome-projeto
+Favor fazer as páginas conforme imagens em anexo:
 
-### Instalar o bootstrap
+<ol>
+  <li>Página de listagem dos filmes</li>
+  <li>Detalhe do filme clicado, apresentando a lista de atores</li>
+  <li> Detalhe do ator clicado, apresentando a lista de imagens desse ator, lista de Filmes e lista de Séries de TV</li>
+</ol>
 
-    npm install react-bootstrap bootstrap
+- 1
 
-### Axios para API
-
-    npm i axios
-
-### Iniciar o projeto
-
-    npm run dev
-
-### Base do código
-
-```jsx
-import React from "react";
-
-const index = () => {
-  return <div>index</div>;
-};
-
-export default index;
-```
-
-> rafce
-
-### Componentes
-
-> pages/index.jsx
-
-```jsx
-import React from "react";
-import Cabecalho from "../components/Cabecalho";
-
-const Home = () => {
-  return (
-    <div>
-      <Cabecalho />
-    </div>
-  );
-};
-
-export default Home;
-```
+<img src="/home/hugo/Desenvolvimento/FrontEnd-ReactJS/Filmes-ReactJs/public/1_lista.png" alt='imagem 1'/>
 
 ---
 
-> componentes/Cabecalho.jsx
+- 2
 
-```jsx
-import React from "react";
+## <img src="/home/hugo/Desenvolvimento/FrontEnd-ReactJS/Filmes-ReactJs/public/2_detalhes.png" alt='imagem 2'/>
 
-const Cabecalho = () => {
-  return <div>Cabeçalho</div>;
-};
+---
 
-export default Cabecalho;
-```
+- 3
 
-### Componentes com Props
+<img src="/home/hugo/Desenvolvimento/FrontEnd-ReactJS/Filmes-ReactJs/public/3_atores.png" alt='imagem 3'/>
 
-- #### Componente pai
+---
 
-```jsx
-const Pagina = (props) => {
-  return (
-    <>
-      <Cabecalho />
-      <div className="bg-secondary py-3 text-white text-center mb-3">
-        <Container>
-          <h1>{props.titulo}</h1>
-        </Container>
-      </div>
-
-      {props.children}
-
-      <div
-        style={{ width: "100%" }}
-        className="bg-secondary position-fixed bottom-0 py-3 text-white text-center"
-      >
-        <p>Todos os direitos reservados®</p>
-      </div>
-    </>
-  );
-};
-```
-
-- #### Componente filho
-
-```jsx
-const Home = () => {
-  return (
-    <>
-      <Pagina titulo="Página Inicial">
-        <Container>
-          <h1>Hello World</h1>
-          <li>1</li>
-          <li>2</li>
-          <li>3</li>
-          <li>4</li>
-        </Container>
-      </Pagina>
-    </>
-  );
-};
-```
-
-### Map
-
-```jsx
-{
-  carros.map((carro, index) => <p key={index}>{carro}</p>);
-}
-```
-
-### getServerSideProps
-
-> Substitui o uso do useEffect
-
-```js
-export async function getServerSideProps(context) {
-  const resultado = await apiFilmes.get(
-    `/movie/popular/?api_key=<<suachave>>&language=pt-BR`
-  );
-  const filmes = await resultado.data;
-  return {
-    props: { filmes }, // will be passed to the page component as props
-  };
-}
-```
+Abraços,
+Orion
