@@ -12,8 +12,8 @@ baseURL: https://dadosabertos.camara.leg.br/api/v2
 
 - imagem 1
 
-  <img alt="img" src="/home/hugo/Desenvolvimento/FrontEnd-ReactJS/revisao/public/imagem1.png"/>
+  <img alt="img" src="../public/imagem1.png"/>
 
 - imagem 2
 
-<img alt="img" src="/home/hugo/Desenvolvimento/FrontEnd-ReactJS/revisao/public/imagem2.png"/>
+<img alt="img" src="../public/imagem2.png"/>
