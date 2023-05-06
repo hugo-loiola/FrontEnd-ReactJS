@@ -28,11 +28,11 @@ const index = () => {
 export default index;
 ```
 
-- rafce
+> rafce
 
 ### Componentes
 
-- pages/index.jsx
+> pages/index.jsx
 
 ```jsx
 import React from "react";
@@ -51,7 +51,7 @@ export default Home;
 
 ---
 
-- componentes/Cabecalho.jsx
+> componentes/Cabecalho.jsx
 
 ```jsx
 import React from "react";
@@ -116,5 +116,21 @@ const Home = () => {
 ```jsx
 {
   carros.map((carro, index) => <p key={index}>{carro}</p>);
+}
+```
+
+### getServerSideProps
+
+> Substitui o uso do useEffect
+
+```js
+export async function getServerSideProps(context) {
+  const resultado = await apiFilmes.get(
+    `/movie/popular/?api_key=<<suachave>>&language=pt-BR`
+  );
+  const filmes = await resultado.data;
+  return {
+    props: { filmes }, // will be passed to the page component as props
+  };
 }
 ```
