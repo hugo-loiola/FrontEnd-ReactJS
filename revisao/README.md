@@ -12,7 +12,7 @@ baseURL: https://dadosabertos.camara.leg.br/api/v2
 
 - imagem 1
 
-  <img alt="img" src="../public/imagem1.png"/>
+  <img alt="img" src="revisao/public/imagem1.png"/>
 
 - imagem 2
 
