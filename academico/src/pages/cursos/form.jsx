@@ -1,7 +1,8 @@
+import Pagina from "@/components/Pagina";
 import React from "react";
 
 const form = () => {
-  return <div>form</div>;
+  return <Pagina>form</Pagina>;
 };
 
 export default form;

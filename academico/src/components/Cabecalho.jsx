@@ -12,7 +12,7 @@ const Cabecalho = () => {
           <Navbar.Toggle aria-controls="responsive-navbar-nav" />
           <Navbar.Collapse id="responsive-navbar-nav">
             <Nav className="me-auto ">
-              <Nav.Link href="/obras"></Nav.Link>
+              <Nav.Link href="/cursos">Cursos</Nav.Link>
               <Nav.Link href="/tipos_de_artes"></Nav.Link>
             </Nav>
           </Navbar.Collapse>

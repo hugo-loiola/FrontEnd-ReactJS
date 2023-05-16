@@ -1,7 +1,8 @@
+import Pagina from "@/components/Pagina";
 import React from "react";
 
 const index = () => {
-  return <div>index</div>;
+  return <Pagina titulo="Cursos"></Pagina>;
 };
 
 export default index;
