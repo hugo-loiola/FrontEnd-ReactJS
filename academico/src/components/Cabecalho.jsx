@@ -9,7 +9,7 @@ const Cabecalho = () => {
       <Navbar variant="dark" collapseOnSelect expand="lg" bg="dark">
         <Container>
           <Navbar.Toggle aria-controls="responsive-navbar-nav" />
-          <Navbar.Brand href="/">Obras de Arte</Navbar.Brand>
+          <Navbar.Brand href="/">Acadêmico</Navbar.Brand>
           <Navbar.Collapse id="responsive-navbar-nav">
             <Nav className="me-auto ">
               <Nav.Link href="/obras">Obras</Nav.Link>
