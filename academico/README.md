@@ -4,13 +4,14 @@
 
     npx create-next-app@latest nome-projeto
 
-### Instalar o bootstrap
+### Instalar as bibliotecas
 
-    npm i react-bootstrap bootstrap
-
-### Axios para API
-
-    npm i axios
+    npm install npm install react-bootstrap bootstrap
+    npm install axios
+    npm install react-hook-form
+    npm install react-icons --save
+    npm install firebase
+    npm install uuid
 
 ### Iniciar o projeto
 
