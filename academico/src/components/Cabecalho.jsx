@@ -8,12 +8,12 @@ const Cabecalho = () => {
     <div>
       <Navbar variant="dark" collapseOnSelect expand="lg" bg="dark">
         <Container>
-          <Navbar.Toggle aria-controls="responsive-navbar-nav" />
           <Navbar.Brand href="/">Acadêmico</Navbar.Brand>
+          <Navbar.Toggle aria-controls="responsive-navbar-nav" />
           <Navbar.Collapse id="responsive-navbar-nav">
             <Nav className="me-auto ">
-              <Nav.Link href="/obras">Obras</Nav.Link>
-              <Nav.Link href="/tipos_de_artes">Tipos de Artes</Nav.Link>
+              <Nav.Link href="/obras"></Nav.Link>
+              <Nav.Link href="/tipos_de_artes"></Nav.Link>
             </Nav>
           </Navbar.Collapse>
         </Container>
