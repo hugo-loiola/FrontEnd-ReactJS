@@ -2,14 +2,15 @@ import Pagina from "@/components/Pagina";
 import Link from "next/link";
 import React from "react";
 import { Table } from "react-bootstrap";
+import { MdAdd } from "react-icons/md";
 
 const index = () => {
   return (
     <Pagina titulo="Cursos">
-      <Link href={"/cursos/form"} className="btn btn-primary">
-        Novo
+      <Link href={"/cursos/form"} className="btn btn-primary my-3">
+        Novo <MdAdd />
       </Link>
-      <Table striped bordered hover>
+      <Table striped bordered hover variant="dark">
         <thead>
           <tr>
             <th>#</th>
