@@ -5,6 +5,9 @@ import { useForm } from "react-hook-form";
 
 const form = () => {
   const { register, handleSubmit } = useForm();
+  function salvar(dados) {
+    console.log(dados);
+  }
 
   return (
     <Pagina titulo="Curso">
@@ -24,7 +27,7 @@ const form = () => {
           <Form.Control type="text" {...register("modalidade")} />
         </Form.Group>
 
-        <Button variant="primary" type="submit">
+        <Button variant="primary" onClick={handleSubmit(salvar)}>
           Salvar
         </Button>
       </Form>

@@ -145,3 +145,28 @@ export async function getServerSideProps(context) {
   };
 }
 ```
+
+### Exemplo de Formulario
+
+```js
+<Form>
+  <Form.Group className="mb-3" controlId="nome">
+    <Form.Label>Nome</Form.Label>
+    <Form.Control type="text" {...register("nome")} />
+  </Form.Group>
+
+  <Form.Group className="mb-3" controlId="duracao">
+    <Form.Label>Duração</Form.Label>
+    <Form.Control type="text" {...register("duracao")} />
+  </Form.Group>
+
+  <Form.Group className="mb-3" controlId="modalidade">
+    <Form.Label>Modalidade</Form.Label>
+    <Form.Control type="text" {...register("modalidade")} />
+  </Form.Group>
+
+  <Button variant="primary" onClick={handleSubmit(salvar)}>
+    Salvar
+  </Button>
+</Form>
+```
