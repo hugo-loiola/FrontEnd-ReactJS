@@ -1,44 +1,49 @@
 import Pagina from "@/components/Pagina";
 import Link from "next/link";
-import React from "react";
-import { Table } from "react-bootstrap";
-import { MdAdd } from "react-icons/md";
+import React, { useEffect, useState } from "react";
+import { Button, FormGroup, Table } from "react-bootstrap";
+import { AiOutlineDelete } from "react-icons/ai";
 
 const index = () => {
+  const [cursos, setCursos] = useState([]);
+  useEffect(() => {
+    setCursos(JSON.parse(window.localStorage.getItem("cursos")) || []);
+  }, []);
+  console.log(cursos);
   return (
     <Pagina titulo="Cursos">
-      <Link href={"/cursos/form"} className="btn btn-primary my-3">
-        Novo <MdAdd />
-      </Link>
       <Table striped bordered hover variant="dark">
         <thead>
           <tr>
             <th>#</th>
-            <th>First Name</th>
-            <th>Last Name</th>
-            <th>Username</th>
+            <th>Del</th>
+            <th>NOME</th>
+            <th>Telefone</th>
+            <th>Email</th>
+            <th>Curso</th>
+            <th>Modalidade</th>
           </tr>
         </thead>
         <tbody>
-          <tr>
-            <td>1</td>
-            <td>Mark</td>
-            <td>Otto</td>
-            <td>@mdo</td>
-          </tr>
-          <tr>
-            <td>2</td>
-            <td>Jacob</td>
-            <td>Thornton</td>
-            <td>@fat</td>
-          </tr>
-          <tr>
-            <td>3</td>
-            <td colSpan={2}>Larry the Bird</td>
-            <td>@twitter</td>
-          </tr>
+          {cursos.map((item, i) => (
+            <tr>
+              <td>{i}</td>
+              <td>
+                <AiOutlineDelete className="text-danger" />
+              </td>
+              <td>{item.nome}</td>
+              <td>{item.Numero}</td>
+              <td>{item.Email}</td>
+              <td>{item.Curso}</td>
+              <td>{item.Modadelida}</td>
+            </tr>
+          ))}
         </tbody>
       </Table>
+      <br></br>
+      <Button href="/cursos/form" variant="primary">
+        Inscreva-se
+      </Button>{" "}
     </Pagina>
   );
 };
