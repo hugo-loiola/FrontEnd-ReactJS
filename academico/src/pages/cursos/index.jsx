@@ -11,13 +11,24 @@ const index = () => {
     setCursos(JSON.parse(window.localStorage.getItem("cursos")) || []);
   }, []);
 
+  function getAll() {
+    return JSON.parse(window.localStorage.getItem("cursos") || []);
+  }
+
+  function exlcuir(id) {
+    const cursos = getAll(id);
+    cursos.splice(id, 1);
+    window.localStorage.setItem("cursos", JSON.stringify(cursos));
+    setCursos(cursos);
+  }
+
   return (
     <Pagina titulo="Cursos">
       <Link href={"/cursos/form"} className="btn btn-primary mb-2">
         Novo
       </Link>
 
-      <Table striped bordered hover>
+      <Table striped bordered hover variant="dark">
         <thead>
           <tr>
             <th>#</th>

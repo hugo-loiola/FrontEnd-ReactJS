@@ -11,7 +11,7 @@ export default function Document() {
         crossorigin="anonymous"
       />
       <title>Acadêmico</title>
-      <body>
+      <body className="bg-dark text-white">
         <Main />
         <NextScript />
       </body>
