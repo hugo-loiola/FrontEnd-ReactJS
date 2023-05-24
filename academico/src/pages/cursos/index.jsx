@@ -2,7 +2,7 @@ import Pagina from "@/components/Pagina";
 import Link from "next/link";
 import React, { useEffect, useState } from "react";
 import { Table } from "react-bootstrap";
-import { AiOutlineDelete } from "react-icons/ai";
+import { MdRestoreFromTrash } from "react-icons/md";
 
 const index = () => {
   const [cursos, setCursos] = useState([]);
@@ -16,10 +16,12 @@ const index = () => {
   }
 
   function exlcuir(id) {
-    const cursos = getAll(id);
-    cursos.splice(id, 1);
-    window.localStorage.setItem("cursos", JSON.stringify(cursos));
-    setCursos(cursos);
+    if (confirm("Você tem certeza que quer excluir?")) {
+      const cursos = getAll(id);
+      cursos.splice(id, 1);
+      window.localStorage.setItem("cursos", JSON.stringify(cursos));
+      setCursos(cursos);
+    }
   }
 
   return (
@@ -30,8 +32,9 @@ const index = () => {
 
       <Table striped bordered hover variant="dark">
         <thead>
-          <tr>
+          <tr className="text-center">
             <th>#</th>
+            <th>Deletar</th>
             <th>Nome</th>
             <th>Duração</th>
             <th>Modalidade</th>
@@ -39,9 +42,13 @@ const index = () => {
         </thead>
         <tbody>
           {cursos.map((item, i) => (
-            <tr>
+            <tr className="text-center">
+              <td>{i}</td>
               <td>
-                <AiOutlineDelete className="text-danger" />
+                <MdRestoreFromTrash
+                  className="text-danger"
+                  onClick={() => exlcuir(i)}
+                />
               </td>
               <td>{item.nome}</td>
               <td>{item.duracao}</td>
