@@ -2,7 +2,11 @@ import Pagina from "@/components/Pagina";
 import Link from "next/link";
 import React, { useEffect, useState } from "react";
 import { Table } from "react-bootstrap";
-import { MdRestoreFromTrash } from "react-icons/md";
+import {
+  MdRestoreFromTrash,
+  MdEdit,
+  MdOutlinePersonAddAlt,
+} from "react-icons/md";
 
 const index = () => {
   const [cursos, setCursos] = useState([]);
@@ -27,14 +31,13 @@ const index = () => {
   return (
     <Pagina titulo="Cursos">
       <Link href={"/cursos/form"} className="btn btn-primary mb-2">
-        Novo
+        Novo <MdOutlinePersonAddAlt />
       </Link>
 
       <Table striped bordered hover variant="dark">
         <thead>
           <tr className="text-center">
             <th>#</th>
-            <th>Deletar</th>
             <th>Nome</th>
             <th>Duração</th>
             <th>Modalidade</th>
@@ -43,13 +46,16 @@ const index = () => {
         <tbody>
           {cursos.map((item, i) => (
             <tr className="text-center">
-              <td>{i}</td>
               <td>
+                <Link href={`/cursos/${i}`}>
+                  <MdEdit className="mx-2 text-primary" />
+                </Link>
                 <MdRestoreFromTrash
                   className="text-danger"
                   onClick={() => exlcuir(i)}
                 />
               </td>
+
               <td>{item.nome}</td>
               <td>{item.duracao}</td>
               <td>{item.modalidade}</td>
