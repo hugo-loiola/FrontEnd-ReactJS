@@ -1,4 +1,5 @@
 import Pagina from "@/components/Pagina";
+import Link from "next/link";
 import { useRouter } from "next/router";
 import React, { useState } from "react";
 import { Button, Form } from "react-bootstrap";
@@ -32,10 +33,14 @@ const form = () => {
           <Form.Label>Modalidade: </Form.Label>
           <Form.Control type="text" {...register("modalidade")} />
         </Form.Group>
-
-        <Button variant="primary" onClick={handleSubmit(salvar)}>
-          Salvar
-        </Button>
+        <div className="text-center ">
+          <Button variant="primary" onClick={handleSubmit(salvar)}>
+            Salvar
+          </Button>
+          <Link href={"/cursos"} className="btn btn-light">
+            Voltar
+          </Link>
+        </div>
       </Form>
     </Pagina>
   );
