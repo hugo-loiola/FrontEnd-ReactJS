@@ -1,49 +1,68 @@
 import Pagina from "@/components/Pagina";
 import Link from "next/link";
 import React, { useEffect, useState } from "react";
-import { Button, FormGroup, Table } from "react-bootstrap";
-import { AiOutlineDelete } from "react-icons/ai";
+import { Table } from "react-bootstrap";
+import {
+  MdRestoreFromTrash,
+  MdEdit,
+  MdOutlinePersonAddAlt,
+} from "react-icons/md";
 
 const index = () => {
   const [cursos, setCursos] = useState([]);
+
   useEffect(() => {
     setCursos(JSON.parse(window.localStorage.getItem("cursos")) || []);
   }, []);
-  console.log(cursos);
+
+  function getAll() {
+    return JSON.parse(window.localStorage.getItem("cursos") || []);
+  }
+
+  function exlcuir(id) {
+    if (confirm("Você tem certeza que quer excluir?")) {
+      const cursos = getAll(id);
+      cursos.splice(id, 1);
+      window.localStorage.setItem("cursos", JSON.stringify(cursos));
+      setCursos(cursos);
+    }
+  }
+
   return (
     <Pagina titulo="Cursos">
+      <Link href={"/cursos/form"} className="btn btn-primary mb-2">
+        Novo <MdOutlinePersonAddAlt />
+      </Link>
+
       <Table striped bordered hover variant="dark">
         <thead>
-          <tr>
+          <tr className="text-center">
             <th>#</th>
-            <th>Del</th>
-            <th>NOME</th>
-            <th>Telefone</th>
-            <th>Email</th>
-            <th>Curso</th>
+            <th>Nome</th>
+            <th>Duração</th>
             <th>Modalidade</th>
           </tr>
         </thead>
         <tbody>
           {cursos.map((item, i) => (
-            <tr>
-              <td>{i}</td>
+            <tr className="text-center">
               <td>
-                <AiOutlineDelete className="text-danger" />
+                <Link href={`/cursos/${i}`}>
+                  <MdEdit className="mx-2 text-primary" />
+                </Link>
+                <MdRestoreFromTrash
+                  className="text-danger"
+                  onClick={() => exlcuir(i)}
+                />
               </td>
+
               <td>{item.nome}</td>
-              <td>{item.Numero}</td>
-              <td>{item.Email}</td>
-              <td>{item.Curso}</td>
-              <td>{item.Modadelida}</td>
+              <td>{item.duracao}</td>
+              <td>{item.modalidade}</td>
             </tr>
           ))}
         </tbody>
       </Table>
-      <br></br>
-      <Button href="/cursos/form" variant="primary">
-        Inscreva-se
-      </Button>{" "}
     </Pagina>
   );
 };
