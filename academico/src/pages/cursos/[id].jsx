@@ -1,7 +1,7 @@
 import Pagina from "@/components/Pagina";
 import Link from "next/link";
 import { useRouter } from "next/router";
-import React, { useEffect, useState } from "react";
+import React, { useEffect } from "react";
 import { Button, Form } from "react-bootstrap";
 import { useForm } from "react-hook-form";
 import { MdKeyboardBackspace, MdOutlineCheck } from "react-icons/md";
