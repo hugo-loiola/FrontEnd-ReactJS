@@ -1,7 +1,8 @@
 import Pagina from "@/components/Pagina";
+import axios from "axios";
 import Link from "next/link";
 import { useRouter } from "next/router";
-import React, { useState } from "react";
+import React from "react";
 import { Button, Form } from "react-bootstrap";
 import { useForm } from "react-hook-form";
 import { MdKeyboardBackspace, MdOutlineCheck } from "react-icons/md";
@@ -11,11 +12,7 @@ const form = () => {
   const { register, handleSubmit } = useForm();
 
   function salvar(dados) {
-    const disciplinas =
-      JSON.parse(window.localStorage.getItem("disciplinas")) || [];
-    disciplinas.push(dados);
-    window.localStorage.setItem("disciplinas", JSON.stringify(disciplinas));
-    push("/disciplinas");
+    axios.post("/api/disciplinas", dados);
   }
 
   return (
@@ -26,14 +23,9 @@ const form = () => {
           <Form.Control type="text" {...register("nome")} />
         </Form.Group>
 
-        <Form.Group className="mb-3" controlId="duracao">
-          <Form.Label>Duração: </Form.Label>
-          <Form.Control type="text" {...register("duracao")} />
-        </Form.Group>
-
-        <Form.Group className="mb-3" controlId="modalidade">
-          <Form.Label>Modalidade: </Form.Label>
-          <Form.Control type="text" {...register("modalidade")} />
+        <Form.Group className="mb-3" controlId="curso">
+          <Form.Label>Curso </Form.Label>
+          <Form.Control type="text" {...register("curso")} />
         </Form.Group>
         <div className="text-center ">
           <Button variant="success" onClick={handleSubmit(salvar)}>

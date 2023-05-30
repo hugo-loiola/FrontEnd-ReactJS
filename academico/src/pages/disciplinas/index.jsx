@@ -1,4 +1,6 @@
 import Pagina from "@/components/Pagina";
+import axios from "axios";
+import Head from "next/head";
 import Link from "next/link";
 import React, { useEffect, useState } from "react";
 import { Table } from "react-bootstrap";
@@ -8,14 +10,8 @@ import {
   MdOutlinePersonAddAlt,
 } from "react-icons/md";
 
-const index = () => {
-  const [disciplinas, setDisciplinas] = useState([]);
-
+const index = ({ disciplinas }) => {
   useEffect(() => {}, []);
-
-  function getAll() {
-    return JSON.parse(window.localStorage.getItem("disciplinas") || []);
-  }
 
   return (
     <Pagina titulo="Disciplinas">
@@ -28,8 +24,7 @@ const index = () => {
           <tr className="text-center">
             <th>#</th>
             <th>Nome</th>
-            <th>Duração</th>
-            <th>Modalidade</th>
+            <th>Curso</th>
           </tr>
         </thead>
         <tbody>
@@ -46,8 +41,7 @@ const index = () => {
               </td>
 
               <td>{item.nome}</td>
-              <td>{item.duracao}</td>
-              <td>{item.modalidade}</td>
+              <td>{item.curso}</td>
             </tr>
           ))}
         </tbody>
@@ -57,3 +51,10 @@ const index = () => {
 };
 
 export default index;
+export async function getServerSideProps(context) {
+  const resultado = await axios.get(`/api/disciplinas`);
+  const disciplinas = await resultado.data;
+  return {
+    props: { disciplinas }, // will be passed to the page component as props
+  };
+}
