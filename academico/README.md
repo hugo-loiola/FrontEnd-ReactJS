@@ -1,172 +1,38 @@
-# [Acadêmico](https://projeto-academico.vercel.app/)
+This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
 
-### Criar um projeto
+## Getting Started
 
-    npx create-next-app@latest nome-projeto
+First, run the development server:
 
-### Instalar as bibliotecas
-
-    npm install npm install react-bootstrap bootstrap
-    npm install axios
-    npm install react-hook-form
-    npm install react-icons --save
-    npm install firebase
-    npm install uuid
-
-### Configurar Bootstrap
-
-```html
-<!--/_document.js-->
-<link
-  rel="stylesheet"
-  href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css"
-  integrity="sha384-rbsA2VBKQhggwzxH7pPCaAqO46MgnOM80zW1RWuH61DGLwZJEdK2Kadq2F9CUG65"
-  crossorigin="anonymous"
-/>
+```bash
+npm run dev
+# or
+yarn dev
+# or
+pnpm dev
 ```
 
-### Iniciar o projeto
+Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
 
-    npm run dev
+You can start editing the page by modifying `pages/index.js`. The page auto-updates as you edit the file.
 
-### Base do código
+[API routes](https://nextjs.org/docs/api-routes/introduction) can be accessed on [http://localhost:3000/api/hello](http://localhost:3000/api/hello). This endpoint can be edited in `pages/api/hello.js`.
 
-```jsx
-import React from "react";
+The `pages/api` directory is mapped to `/api/*`. Files in this directory are treated as [API routes](https://nextjs.org/docs/api-routes/introduction) instead of React pages.
 
-const index = () => {
-  return <div>index</div>;
-};
+This project uses [`next/font`](https://nextjs.org/docs/basic-features/font-optimization) to automatically optimize and load Inter, a custom Google Font.
 
-export default index;
-```
+## Learn More
 
-> rafce
+To learn more about Next.js, take a look at the following resources:
 
-### Componentes
+- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
+- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
 
-> pages/index.jsx
+You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
 
-```jsx
-import React from "react";
-import Cabecalho from "../components/Cabecalho";
+## Deploy on Vercel
 
-const Home = () => {
-  return (
-    <div>
-      <Cabecalho />
-    </div>
-  );
-};
+The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
 
-export default Home;
-```
-
----
-
-> componentes/Cabecalho.jsx
-
-```jsx
-import React from "react";
-
-const Cabecalho = () => {
-  return <div>Cabeçalho</div>;
-};
-
-export default Cabecalho;
-```
-
-### Componentes com Props
-
-- #### Componente pai
-
-```jsx
-const Pagina = (props) => {
-  return (
-    <>
-      <Cabecalho />
-      <div className="bg-secondary py-3 text-white text-center mb-3">
-        <Container>
-          <h1>{props.titulo}</h1>
-        </Container>
-      </div>
-
-      {props.children}
-
-      <div
-        style={{ width: "100%" }}
-        className="bg-secondary position-fixed bottom-0 py-3 text-white text-center"
-      >
-        <p>Todos os direitos reservados®</p>
-      </div>
-    </>
-  );
-};
-```
-
-- #### Componente filho
-
-```jsx
-const Home = () => {
-  return (
-    <>
-      <Pagina titulo="Página Inicial">
-        <Container>
-          <h1>Hello World</h1>
-          <li>1</li>
-          <li>2</li>
-          <li>3</li>
-          <li>4</li>
-        </Container>
-      </Pagina>
-    </>
-  );
-};
-```
-
-### Map
-
-```jsx
-{
-  carros.map((carro, index) => <p key={index}>{carro}</p>);
-}
-```
-
-### getServerSideProps
-
-> Substitui o uso do useEffect
-
-```js
-export async function getServerSideProps(context) {
-  const resultado = await apiFilmes.get(`/endpoint`);
-  const filmes = await resultado.data;
-  return {
-    props: { filmes }, // will be passed to the page component as props
-  };
-}
-```
-
-### Exemplo de Formulario
-
-```js
-<Form>
-  <Form.Group className="mb-3" controlId="nome">
-    <Form.Label>Nome</Form.Label>
-    <Form.Control type="text" {...register("nome")} />
-  </Form.Group>
-
-  <Form.Group className="mb-3" controlId="duracao">
-    <Form.Label>Duração</Form.Label>
-    <Form.Control type="text" {...register("duracao")} />
-  </Form.Group>
-
-  <Form.Group className="mb-3" controlId="modalidade">
-    <Form.Label>Modalidade</Form.Label>
-    <Form.Control type="text" {...register("modalidade")} />
-  </Form.Group>
-
-  <Button variant="primary" onClick={handleSubmit(salvar)}>
-    Salvar
-  </Button>
-</Form>
-```
+Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
