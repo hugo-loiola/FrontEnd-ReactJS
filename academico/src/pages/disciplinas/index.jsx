@@ -37,6 +37,7 @@ const index = () => {
                   <MdEdit className="mx-2 text-primary" />
                 </Link>
                 <MdRestoreFromTrash
+                  type="submit"
                   className="text-danger"
                   onClick={() => exlcuir(i)}
                 />
