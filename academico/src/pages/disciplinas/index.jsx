@@ -12,7 +12,7 @@ import {
 const index = () => {
   const [disciplina, setDisciplina] = useState([]);
   useEffect(() => {
-    axios.get("/api/disciplinas").then((res) => console.log(res.data));
+    axios.get("/api/disciplinas").then((res) => setDisciplina(res.data));
   }, []);
 
   return (
