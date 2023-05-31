@@ -12,8 +12,8 @@ const form = () => {
   const { register, handleSubmit } = useForm();
 
   function salvar(dados) {
-    axios.put("/api/disciplinas", dados);
-    push("disciplinas");
+    axios.put(`/api/disciplinas/${id}`, dados);
+    push("/disciplinas");
   }
 
   return (
