@@ -31,7 +31,7 @@ const index = () => {
         Novo
       </Link>
 
-      <Table striped bordered hover>
+      <Table striped bordered hover variant="dark">
         <thead>
           <tr>
             <th>#</th>
