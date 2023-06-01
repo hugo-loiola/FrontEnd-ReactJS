@@ -1,4 +1,5 @@
 import Pagina from "@/components/Pagina";
+import axios from "axios";
 import Link from "next/link";
 import React, { useEffect, useState } from "react";
 import { Button, Table } from "react-bootstrap";
@@ -9,19 +10,19 @@ const index = () => {
   const [cursos, setCursos] = useState([]);
 
   useEffect(() => {
-    setCursos(getAll());
+    getAll();
   }, []);
 
   function getAll() {
-    return JSON.parse(window.localStorage.getItem("cursos")) || [];
+    axios.get("/api/cursos").then((res) => {
+      setCursos(res.data);
+    });
   }
 
   function excluir(id) {
-    if (confirm("Deseja realmente excluir o registro?")) {
-      const cursos = getAll();
-      cursos.splice(id, 1);
-      window.localStorage.setItem("cursos", JSON.stringify(cursos));
-      setCursos(cursos);
+    if (confirm("Você tem certeza disso?")) {
+      axios.delete(`/api/cursos/${id}`);
+      getAll();
     }
   }
 
@@ -41,14 +42,14 @@ const index = () => {
           </tr>
         </thead>
         <tbody>
-          {cursos.map((item, i) => (
-            <tr key={i}>
+          {cursos.map((item) => (
+            <tr key={item.id}>
               <td>
-                <Link href={"/cursos/" + i}>
+                <Link href={`/cursos/${item.id}`}>
                   <BsFillPencilFill className="me-2 text-primary" />
                 </Link>
                 <AiOutlineDelete
-                  onClick={() => excluir(i)}
+                  onClick={() => excluir(item.id)}
                   className="text-danger"
                 />
               </td>
