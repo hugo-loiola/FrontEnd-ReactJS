@@ -2,17 +2,29 @@ import Pagina from "@/components/Pagina";
 import axios from "axios";
 import Link from "next/link";
 import { useRouter } from "next/router";
-import React from "react";
+import React, { useEffect } from "react";
 import { Button, Form } from "react-bootstrap";
 import { useForm } from "react-hook-form";
 import { MdKeyboardBackspace, MdOutlineCheck } from "react-icons/md";
 
 const form = () => {
-  const { push } = useRouter();
-  const { register, handleSubmit } = useForm();
+  const { push, query } = useRouter();
+  const { register, handleSubmit, setValue } = useForm();
+
+  useEffect(() => {
+    if (query.id) {
+      axios.get(`/api/disciplinas/${query.id}`).then((res) => {
+        const disciplina = res.data;
+
+        for (let atributo in disciplina) {
+          setValue(atributo, disciplina[atributo]);
+        }
+      });
+    }
+  }, [query.id]);
 
   function salvar(dados) {
-    axios.put(`/api/disciplinas/${id}`, dados);
+    axios.put(`/api/disciplinas/${dados.id}`, dados);
     push("/disciplinas");
   }
 

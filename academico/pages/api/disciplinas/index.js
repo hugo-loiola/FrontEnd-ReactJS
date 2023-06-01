@@ -20,9 +20,5 @@ export default function handler(req, res) {
 
     set(ref(db, "disciplinas/" + id), dados);
     res.status(200).json(dados);
-  } else if (req.method === "PUT") {
-    set(ref(db, `disciplinas/${id}`), dados);
-    res.status(200).json(dados);
-  } else if (req.method === "DELETE") {
   }
 }
