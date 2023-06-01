@@ -26,13 +26,13 @@ const form = () => {
         </Form.Group>
 
         <Form.Group className="mb-3" controlId="duracao">
-          <Form.Label>Curso: </Form.Label>
+          <Form.Label>Duração: </Form.Label>
           <Form.Control type="text" {...register("duracao")} />
         </Form.Group>
 
         <Form.Group className="mb-3" controlId="modalidade">
-          <Form.Label>Curso </Form.Label>
-          <Form.Control type="text" {...register("modalidade")} />
+          <Form.Label>Modalidade: </Form.Label>
+          <Form.Control type="text" {...register("modalidade  ")} />
         </Form.Group>
 
         <div className="text-center">
