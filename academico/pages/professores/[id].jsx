@@ -14,10 +14,10 @@ const form = () => {
   useEffect(() => {
     if (query.id) {
       axios.get(`/api/professores/${query.id}`).then((res) => {
-        const professor = res.data;
+        const disciplina = res.data;
 
-        for (let atributo in professor) {
-          setValue(professor, professor[atributo]);
+        for (let atributo in disciplina) {
+          setValue(atributo, disciplina[atributo]);
         }
       });
     }
@@ -53,12 +53,12 @@ const form = () => {
 
         <Form.Group className="mb-3" controlId="email">
           <Form.Label>Email: </Form.Label>
-          <Form.Control type="email" {...register("email")} />
+          <Form.Control type="text" {...register("email")} />
         </Form.Group>
 
         <Form.Group className="mb-3" controlId="telefone">
           <Form.Label>Telefone: </Form.Label>
-          <Form.Control type="tel" {...register("telefone")} />
+          <Form.Control type="text" {...register("telefone")} />
         </Form.Group>
 
         <Form.Group className="mb-3" controlId="cep">
@@ -78,7 +78,7 @@ const form = () => {
 
         <Form.Group className="mb-3" controlId="numero">
           <Form.Label>Numero: </Form.Label>
-          <Form.Control type="number" {...register("numero")} />
+          <Form.Control type="text" {...register("numero")} />
         </Form.Group>
 
         <Form.Group className="mb-3" controlId="bairro">
@@ -90,7 +90,7 @@ const form = () => {
             <MdOutlineCheck className="mx-1" />
             Salvar
           </Button>
-          <Link href={"/disciplinas"} className="mx-3 btn btn-light">
+          <Link href={"/professores"} className="mx-3 btn btn-light">
             <MdKeyboardBackspace className="mx-1" />
             Voltar
           </Link>

@@ -42,12 +42,12 @@ const form = () => {
 
         <Form.Group className="mb-3" controlId="email">
           <Form.Label>Email: </Form.Label>
-          <Form.Control type="email" {...register("email")} />
+          <Form.Control type="text" {...register("email")} />
         </Form.Group>
 
         <Form.Group className="mb-3" controlId="telefone">
           <Form.Label>Telefone: </Form.Label>
-          <Form.Control type="tel" {...register("telefone")} />
+          <Form.Control type="text" {...register("telefone")} />
         </Form.Group>
 
         <Form.Group className="mb-3" controlId="cep">
@@ -67,7 +67,7 @@ const form = () => {
 
         <Form.Group className="mb-3" controlId="numero">
           <Form.Label>Numero: </Form.Label>
-          <Form.Control type="number" {...register("numero")} />
+          <Form.Control type="text" {...register("numero")} />
         </Form.Group>
 
         <Form.Group className="mb-3" controlId="bairro">
