@@ -5,8 +5,7 @@ import { useRouter } from "next/router";
 import React, { useEffect } from "react";
 import { Button, Form } from "react-bootstrap";
 import { useForm } from "react-hook-form";
-import { AiOutlineCheck } from "react-icons/ai";
-import { IoMdArrowRoundBack } from "react-icons/io";
+import { BsArrowLeftCircleFill, BsCheck2 } from "react-icons/bs";
 
 const form = () => {
   const { push, query } = useRouter();
@@ -49,11 +48,11 @@ const form = () => {
 
         <div className="text-center">
           <Button variant="success" onClick={handleSubmit(salvar)}>
-            <AiOutlineCheck className="me-1" />
+            <BsCheck2 className="me-1" />
             Salvar
           </Button>
           <Link href={"/salas"} className="ms-2 btn btn-danger">
-            <IoMdArrowRoundBack className="me-1" />
+            <BsArrowLeftCircleFill className="me-1" />
             Voltar
           </Link>
         </div>

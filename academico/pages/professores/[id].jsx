@@ -5,7 +5,7 @@ import { useRouter } from "next/router";
 import React, { useEffect } from "react";
 import { Button, Form } from "react-bootstrap";
 import { useForm } from "react-hook-form";
-import { MdKeyboardBackspace, MdOutlineCheck } from "react-icons/md";
+import { BsArrowLeftCircleFill, BsCheck2 } from "react-icons/bs";
 
 const form = () => {
   const { push, query } = useRouter();
@@ -43,22 +43,22 @@ const form = () => {
 
         <Form.Group className="mb-3" controlId="matricula">
           <Form.Label>Matricula: </Form.Label>
-          <Form.Control type="text" {...register("matricula")} />
+          <Form.Control type="number" {...register("matricula")} />
         </Form.Group>
 
         <Form.Group className="mb-3" controlId="salario">
           <Form.Label>Salario: </Form.Label>
-          <Form.Control type="text" {...register("salario")} />
+          <Form.Control type="number" {...register("salario")} />
         </Form.Group>
 
         <Form.Group className="mb-3" controlId="email">
           <Form.Label>Email: </Form.Label>
-          <Form.Control type="text" {...register("email")} />
+          <Form.Control type="email" {...register("email")} />
         </Form.Group>
 
         <Form.Group className="mb-3" controlId="telefone">
           <Form.Label>Telefone: </Form.Label>
-          <Form.Control type="text" {...register("telefone")} />
+          <Form.Control type="tel" {...register("telefone")} />
         </Form.Group>
 
         <Form.Group className="mb-3" controlId="cep">
@@ -85,13 +85,14 @@ const form = () => {
           <Form.Label>Bairro: </Form.Label>
           <Form.Control type="text" {...register("bairro")} />
         </Form.Group>
-        <div className="text-center ">
+
+        <div className="text-center">
           <Button variant="success" onClick={handleSubmit(salvar)}>
-            <MdOutlineCheck className="mx-1" />
+            <BsCheck2 className="me-1" />
             Salvar
           </Button>
-          <Link href={"/professores"} className="mx-3 btn btn-light">
-            <MdKeyboardBackspace className="mx-1" />
+          <Link href={"/professores"} className="ms-2 btn btn-danger">
+            <BsArrowLeftCircleFill className="me-1" />
             Voltar
           </Link>
         </div>

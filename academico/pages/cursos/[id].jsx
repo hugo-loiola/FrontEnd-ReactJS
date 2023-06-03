@@ -5,7 +5,7 @@ import { useRouter } from "next/router";
 import React, { useEffect } from "react";
 import { Button, Form } from "react-bootstrap";
 import { useForm } from "react-hook-form";
-import { MdKeyboardBackspace, MdOutlineCheck } from "react-icons/md";
+import { BsArrowLeftCircleFill, BsCheck2 } from "react-icons/bs";
 
 const form = () => {
   const { push, query } = useRouter();
@@ -45,13 +45,14 @@ const form = () => {
           <Form.Label>Modalidade: </Form.Label>
           <Form.Control type="text" {...register("modalidade")} />
         </Form.Group>
-        <div className="text-center ">
+
+        <div className="text-center">
           <Button variant="success" onClick={handleSubmit(salvar)}>
-            <MdOutlineCheck className="mx-1" />
+            <BsCheck2 className="me-1" />
             Salvar
           </Button>
-          <Link href={"/cursos"} className="mx-3 btn btn-light">
-            <MdKeyboardBackspace className="mx-1" />
+          <Link href={"/semestres"} className="ms-2 btn btn-danger">
+            <BsArrowLeftCircleFill className="me-1" />
             Voltar
           </Link>
         </div>
