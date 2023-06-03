@@ -2,11 +2,10 @@ import Pagina from "@/components/Pagina";
 import axios from "axios";
 import Link from "next/link";
 import { useRouter } from "next/router";
-import React, { useState } from "react";
+import React from "react";
 import { Button, Form } from "react-bootstrap";
 import { useForm } from "react-hook-form";
-import { AiOutlineCheck } from "react-icons/ai";
-import { IoMdArrowRoundBack } from "react-icons/io";
+import { BsArrowLeftCircleFill, BsCheck2 } from "react-icons/bs";
 
 const form = () => {
   const { push } = useRouter();
@@ -32,22 +31,17 @@ const form = () => {
 
         <Form.Group className="mb-3" controlId="matricula">
           <Form.Label>Matricula: </Form.Label>
-          <Form.Control type="text" {...register("matricula")} />
-        </Form.Group>
-
-        <Form.Group className="mb-3" controlId="salario">
-          <Form.Label>Salario: </Form.Label>
-          <Form.Control type="text" {...register("salario")} />
+          <Form.Control type="number" {...register("matricula")} />
         </Form.Group>
 
         <Form.Group className="mb-3" controlId="email">
           <Form.Label>Email: </Form.Label>
-          <Form.Control type="text" {...register("email")} />
+          <Form.Control type="email" {...register("email")} />
         </Form.Group>
 
         <Form.Group className="mb-3" controlId="telefone">
           <Form.Label>Telefone: </Form.Label>
-          <Form.Control type="text" {...register("telefone")} />
+          <Form.Control type="tel" {...register("telefone")} />
         </Form.Group>
 
         <Form.Group className="mb-3" controlId="cep">
@@ -77,11 +71,11 @@ const form = () => {
 
         <div className="text-center">
           <Button variant="success" onClick={handleSubmit(salvar)}>
-            <AiOutlineCheck className="me-1" />
+            <BsCheck2 className="me-1" />
             Salvar
           </Button>
           <Link href={"/alunos"} className="ms-2 btn btn-danger">
-            <IoMdArrowRoundBack className="me-1" />
+            <BsArrowLeftCircleFill className="me-1" />
             Voltar
           </Link>
         </div>

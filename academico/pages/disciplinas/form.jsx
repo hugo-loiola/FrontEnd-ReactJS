@@ -2,7 +2,7 @@ import Pagina from "@/components/Pagina";
 import axios from "axios";
 import Link from "next/link";
 import { useRouter } from "next/router";
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { Button, Form } from "react-bootstrap";
 import { useForm } from "react-hook-form";
 import { BsArrowLeftCircleFill, BsCheck2 } from "react-icons/bs";
@@ -10,6 +10,18 @@ import { BsArrowLeftCircleFill, BsCheck2 } from "react-icons/bs";
 const form = () => {
   const { push } = useRouter();
   const { register, handleSubmit } = useForm();
+
+  const [cursos, setCursos] = useState([]);
+
+  useEffect(() => {
+    getAll();
+  }, []);
+
+  function getAll() {
+    axios.get("/api/cursos").then((res) => {
+      setCursos(res.data);
+    });
+  }
 
   function salvar(dados) {
     axios.post("/api/disciplinas", dados);
@@ -26,7 +38,11 @@ const form = () => {
 
         <Form.Group className="mb-3" controlId="curso">
           <Form.Label>Curso: </Form.Label>
-          <Form.Control type="text" {...register("curso")} />
+          <Form.Select {...register("curso")}>
+            {cursos.map((item) => (
+              <option>{item.nome}</option>
+            ))}
+          </Form.Select>
         </Form.Group>
 
         <div className="text-center">

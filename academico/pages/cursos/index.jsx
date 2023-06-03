@@ -11,6 +11,7 @@ import {
 
 const index = () => {
   const [cursos, setCursos] = useState([]);
+  const [disciplinas, setDisciplinas] = useState([]);
 
   useEffect(() => {
     getAll();

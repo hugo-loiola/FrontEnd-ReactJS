@@ -23,7 +23,7 @@ const index = () => {
   }
 
   function excluir(id) {
-    if (confirm("Are you sure you want to ?")) {
+    if (confirm("Você tem certeza disso?")) {
       axios.delete(`/api/professores/${id}`);
       getAll();
     }
