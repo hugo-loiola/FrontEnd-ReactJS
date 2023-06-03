@@ -14,7 +14,7 @@ const form = () => {
 
   useEffect(() => {
     if (query.id) {
-      axios.get(`/api/salas/${query.id}`).then((res) => {
+      axios.get(`/api/semestres/${query.id}`).then((res) => {
         const disciplina = res.data;
 
         for (let atributo in disciplina) {
@@ -25,26 +25,26 @@ const form = () => {
   }, [query.id]);
 
   function salvar(dados) {
-    axios.put(`/api/salas/${dados.id}`, dados);
-    push("/salas");
+    axios.put(`/api/semestres/${dados.id}`, dados);
+    push("/semestres");
   }
 
   return (
-    <Pagina titulo="Sala">
+    <Pagina titulo="Semestre">
       <Form>
         <Form.Group className="mb-3" controlId="nome">
           <Form.Label>Nome: </Form.Label>
           <Form.Control type="text" {...register("nome")} />
         </Form.Group>
 
-        <Form.Group className="mb-3" controlId="capacidade">
-          <Form.Label>Capacidade </Form.Label>
-          <Form.Control type="number" {...register("capacidade")} />
+        <Form.Group className="mb-3" controlId="dataInicio">
+          <Form.Label>Data de Início: </Form.Label>
+          <Form.Control type="date" {...register("dataInicio")} />
         </Form.Group>
 
-        <Form.Group className="mb-3" controlId="tipo">
-          <Form.Label>Tipo: </Form.Label>
-          <Form.Control type="number" {...register("tipo")} />
+        <Form.Group className="mb-3" controlId="dataFim">
+          <Form.Label>Data Final: </Form.Label>
+          <Form.Control type="date" {...register("dataFim")} />
         </Form.Group>
 
         <div className="text-center">
@@ -52,7 +52,7 @@ const form = () => {
             <AiOutlineCheck className="me-1" />
             Salvar
           </Button>
-          <Link href={"/salas"} className="ms-2 btn btn-danger">
+          <Link href={"/semestres"} className="ms-2 btn btn-danger">
             <IoMdArrowRoundBack className="me-1" />
             Voltar
           </Link>
