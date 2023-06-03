@@ -40,7 +40,7 @@ const form = () => {
           <Form.Label>Curso: </Form.Label>
           <Form.Select {...register("curso")}>
             {cursos.map((item) => (
-              <option>{item.nome}</option>
+              <option value={item.nome}>{item.nome}</option>
             ))}
           </Form.Select>
         </Form.Group>
