@@ -2,12 +2,16 @@ import Pagina from "@/components/Pagina";
 import axios from "axios";
 import Link from "next/link";
 import React, { useEffect, useState } from "react";
-import { Button, Table } from "react-bootstrap";
-import { AiOutlineDelete } from "react-icons/ai";
-import { BsFillPencilFill } from "react-icons/bs";
+import { Table } from "react-bootstrap";
+import {
+  BsFillPencilFill,
+  BsFillTrashFill,
+  BsPlusCircle,
+} from "react-icons/bs";
 
 const index = () => {
   const [cursos, setCursos] = useState([]);
+  const [disciplinas, setDisciplinas] = useState([]);
 
   useEffect(() => {
     getAll();
@@ -30,6 +34,7 @@ const index = () => {
     <Pagina titulo="Cursos">
       <Link href={"/cursos/form"} className="btn btn-primary mb-2">
         Novo
+        <BsPlusCircle className="ms-1" />
       </Link>
 
       <Table striped bordered hover variant="dark">
@@ -48,7 +53,7 @@ const index = () => {
                 <Link href={`/cursos/${item.id}`}>
                   <BsFillPencilFill className="me-2 text-primary" />
                 </Link>
-                <AiOutlineDelete
+                <BsFillTrashFill
                   onClick={() => excluir(item.id)}
                   className="text-danger"
                 />

@@ -2,36 +2,48 @@ import Pagina from "@/components/Pagina";
 import axios from "axios";
 import Link from "next/link";
 import { useRouter } from "next/router";
-import React, { useState } from "react";
+import React, { useEffect } from "react";
 import { Button, Form } from "react-bootstrap";
 import { useForm } from "react-hook-form";
 import { BsArrowLeftCircleFill, BsCheck2 } from "react-icons/bs";
 
 const form = () => {
-  const { push } = useRouter();
-  const { register, handleSubmit } = useForm();
+  const { push, query } = useRouter();
+  const { register, handleSubmit, setValue } = useForm();
+
+  useEffect(() => {
+    if (query.id) {
+      axios.get(`/api/salas/${query.id}`).then((res) => {
+        const disciplina = res.data;
+
+        for (let atributo in disciplina) {
+          setValue(atributo, disciplina[atributo]);
+        }
+      });
+    }
+  }, [query.id]);
 
   function salvar(dados) {
-    axios.post("/api/cursos", dados);
-    push("/cursos");
+    axios.put(`/api/salas/${dados.id}`, dados);
+    push("/salas");
   }
 
   return (
-    <Pagina titulo="Cursos">
+    <Pagina titulo="Sala">
       <Form>
         <Form.Group className="mb-3" controlId="nome">
           <Form.Label>Nome: </Form.Label>
           <Form.Control type="text" {...register("nome")} />
         </Form.Group>
 
-        <Form.Group className="mb-3" controlId="duracao">
-          <Form.Label>Duração: </Form.Label>
-          <Form.Control type="text" {...register("duracao")} />
+        <Form.Group className="mb-3" controlId="capacidade">
+          <Form.Label>Capacidade </Form.Label>
+          <Form.Control type="number" {...register("capacidade")} />
         </Form.Group>
 
-        <Form.Group className="mb-3" controlId="modalidade">
-          <Form.Label>Modalidade: </Form.Label>
-          <Form.Control type="text" {...register("modalidade  ")} />
+        <Form.Group className="mb-3" controlId="tipo">
+          <Form.Label>Tipo: </Form.Label>
+          <Form.Control type="number" {...register("tipo")} />
         </Form.Group>
 
         <div className="text-center">
@@ -39,7 +51,7 @@ const form = () => {
             <BsCheck2 className="me-1" />
             Salvar
           </Button>
-          <Link href={"/cursos"} className="ms-2 btn btn-danger">
+          <Link href={"/salas"} className="ms-2 btn btn-danger">
             <BsArrowLeftCircleFill className="me-1" />
             Voltar
           </Link>

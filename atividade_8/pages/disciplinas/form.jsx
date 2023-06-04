@@ -2,15 +2,26 @@ import Pagina from "@/components/Pagina";
 import axios from "axios";
 import Link from "next/link";
 import { useRouter } from "next/router";
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { Button, Form } from "react-bootstrap";
 import { useForm } from "react-hook-form";
-import { AiOutlineCheck } from "react-icons/ai";
-import { IoMdArrowRoundBack } from "react-icons/io";
+import { BsArrowLeftCircleFill, BsCheck2 } from "react-icons/bs";
 
 const form = () => {
   const { push } = useRouter();
   const { register, handleSubmit } = useForm();
+
+  const [cursos, setCursos] = useState([]);
+
+  useEffect(() => {
+    getAll();
+  }, []);
+
+  function getAll() {
+    axios.get("/api/cursos").then((res) => {
+      setCursos(res.data);
+    });
+  }
 
   function salvar(dados) {
     axios.post("/api/disciplinas", dados);
@@ -27,16 +38,22 @@ const form = () => {
 
         <Form.Group className="mb-3" controlId="curso">
           <Form.Label>Curso: </Form.Label>
-          <Form.Control type="text" {...register("curso")} />
+          <Form.Select {...register("curso")}>
+            {cursos.map((item) => (
+              <option value={item.nome} key={item.id}>
+                {item.nome}
+              </option>
+            ))}
+          </Form.Select>
         </Form.Group>
 
         <div className="text-center">
           <Button variant="success" onClick={handleSubmit(salvar)}>
-            <AiOutlineCheck className="me-1" />
+            <BsCheck2 className="me-1" />
             Salvar
           </Button>
           <Link href={"/disciplinas"} className="ms-2 btn btn-danger">
-            <IoMdArrowRoundBack className="me-1" />
+            <BsArrowLeftCircleFill className="me-1" />
             Voltar
           </Link>
         </div>
