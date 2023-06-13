@@ -22,63 +22,90 @@ const form = () => {
         <Row className="mb-3">
           <Form.Group as={Col} controlId="nome">
             <Form.Label>Nome: </Form.Label>
-            <Form.Control type="text" {...register("nome")} />
+            <Form.Control
+              type="text"
+              {...register("nome", { required: true, maxLength: 50 })}
+            />
           </Form.Group>
 
           <Form.Group as={Col} controlId="cpf">
             <Form.Label>CPF: </Form.Label>
-            <Form.Control type="text" {...register("cpf")} />
+            <Form.Control
+              type="text"
+              {...register("cpf", { required: true, maxLength: 20 })}
+            />
           </Form.Group>
         </Row>
 
         <Row className="mb-3">
           <Form.Group as={Col} controlId="matricula">
             <Form.Label>Matricula: </Form.Label>
-            <Form.Control type="number" {...register("matricula")} />
+            <Form.Control
+              type="number"
+              {...register("matricula", { maxLength: 20 })}
+            />
           </Form.Group>
 
           <Form.Group as={Col} controlId="salario">
             <Form.Label>Salario: </Form.Label>
-            <Form.Control type="number" {...register("salario")} />
+            <Form.Control type="number" {...register("salario", { max: 8 })} />
           </Form.Group>
         </Row>
 
         <Row className="mb-3">
           <Form.Group as={Col} controlId="email">
             <Form.Label>Email: </Form.Label>
-            <Form.Control type="email" {...register("email")} />
+            <Form.Control
+              type="email"
+              {...register("email", { maxLength: 100 })}
+            />
           </Form.Group>
 
           <Form.Group as={Col} controlId="telefone">
             <Form.Label>Telefone: </Form.Label>
-            <Form.Control type="tel" {...register("telefone")} />
+            <Form.Control
+              type="tel"
+              {...register("telefone", { maxLength: 15 })}
+            />
           </Form.Group>
         </Row>
 
         <Row className="mb-3">
           <Form.Group as={Col} controlId="cep">
             <Form.Label>CEP: </Form.Label>
-            <Form.Control type="text" {...register("cep")} />
+            <Form.Control type="text" {...register("cep", { maxLength: 11 })} />
           </Form.Group>
           <Form.Group as={Col} controlId="logradouro">
             <Form.Label>Logradouro: </Form.Label>
-            <Form.Control type="text" {...register("logradouro")} />
+            <Form.Control
+              type="text"
+              {...register("logradouro", { maxLength: 100 })}
+            />
           </Form.Group>
         </Row>
 
         <Row className="mb-3">
           <Form.Group as={Col} controlId="complemento">
             <Form.Label>Complemento: </Form.Label>
-            <Form.Control type="text" {...register("complemento")} />
+            <Form.Control
+              type="text"
+              {...register("complemento", { maxLength: 100 })}
+            />
           </Form.Group>
           <Form.Group as={Col} controlId="numero">
             <Form.Label>Numero: </Form.Label>
-            <Form.Control type="text" {...register("numero")} />
+            <Form.Control
+              type="text"
+              {...register("numero", { maxLength: 20 })}
+            />
           </Form.Group>
 
           <Form.Group as={Col} controlId="bairro">
             <Form.Label>Bairro: </Form.Label>
-            <Form.Control type="text" {...register("bairro")} />
+            <Form.Control
+              type="text"
+              {...register("bairro", { maxLength: 100 })}
+            />
           </Form.Group>
         </Row>
 
