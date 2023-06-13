@@ -1,4 +1,5 @@
 import Pagina from "@/components/Pagina";
+import salaValidator from "@/validators/salasValidators";
 import axios from "axios";
 import Link from "next/link";
 import { useRouter } from "next/router";
@@ -9,7 +10,11 @@ import { BsArrowLeftCircleFill, BsCheck2 } from "react-icons/bs";
 
 const form = () => {
   const { push } = useRouter();
-  const { register, handleSubmit } = useForm();
+  const {
+    register,
+    handleSubmit,
+    formState: { errors },
+  } = useForm();
 
   function salvar(dados) {
     axios.post("/api/salas", dados);
@@ -21,10 +26,10 @@ const form = () => {
       <Form>
         <Form.Group className="mb-3" controlId="nome">
           <Form.Label>Nome: </Form.Label>
-          <Form.Control
-            type="text"
-            {...register("nome", { required: true, maxLength: 50 })}
-          />
+          <Form.Control type="text" {...register("nome", salaValidator.nome)} />
+          {errors.nome && (
+            <small className="text-danger">{errors.nome.message}</small>
+          )}
         </Form.Group>
 
         <Row className="mb-3">
@@ -32,16 +37,22 @@ const form = () => {
             <Form.Label>Capacidade </Form.Label>
             <Form.Control
               type="number"
-              {...register("capacidade", { max: 11 })}
+              {...register("capacidade", salaValidator.capacidade)}
             />
+            {errors.capacidade && (
+              <small className="text-danger">{errors.capacidade.message}</small>
+            )}
           </Form.Group>
 
           <Form.Group as={Col} controlId="tipo">
             <Form.Label>Tipo: </Form.Label>
             <Form.Control
               type="number"
-              {...register("tipo", { required: true, max: 1 })}
+              {...register("tipo", salaValidator.tipo)}
             />
+            {errors.tipo && (
+              <small className="text-danger">{errors.tipo.message}</small>
+            )}
           </Form.Group>
         </Row>
 
