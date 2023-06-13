@@ -1,4 +1,5 @@
 import Pagina from "@/components/Pagina";
+import alunoValidator from "@/validators/alunosValidators";
 import axios from "axios";
 import Link from "next/link";
 import { useRouter } from "next/router";
@@ -9,7 +10,12 @@ import { BsArrowLeftCircleFill, BsCheck2 } from "react-icons/bs";
 
 const form = () => {
   const { push, query } = useRouter();
-  const { register, handleSubmit, setValue } = useForm();
+  const {
+    register,
+    handleSubmit,
+    setValue,
+    formState: { errors },
+  } = useForm();
 
   useEffect(() => {
     if (query.id) {
@@ -36,16 +42,22 @@ const form = () => {
             <Form.Label>Nome: </Form.Label>
             <Form.Control
               type="text"
-              {...register("nome", { required: true, maxLength: 50 })}
+              {...register("nome", alunoValidator.nome)}
             />
+            {errors.nome && (
+              <small className="text-danger">{errors.nome.message}</small>
+            )}
           </Form.Group>
 
           <Form.Group as={Col} controlId="cpf">
             <Form.Label>CPF: </Form.Label>
             <Form.Control
               type="text"
-              {...register("cpf", { required: true, maxLength: 20 })}
+              {...register("cpf", alunoValidator.cpf)}
             />
+            {errors.cpf && (
+              <small className="text-danger">{errors.cpf.message}</small>
+            )}
           </Form.Group>
         </Row>
 
@@ -54,16 +66,22 @@ const form = () => {
             <Form.Label>Matricula: </Form.Label>
             <Form.Control
               type="text"
-              {...register("matricula", { required: true, maxLength: 20 })}
+              {...register("matricula", alunoValidator.matricula)}
             />
+            {errors.matricula && (
+              <small className="text-danger">{errors.matricula.message}</small>
+            )}
           </Form.Group>
 
           <Form.Group as={Col} controlId="email">
             <Form.Label>Email: </Form.Label>
             <Form.Control
               type="email"
-              {...register("email", { maxLength: 100 })}
+              {...register("email", alunoValidator.email)}
             />
+            {errors.email && (
+              <small className="text-danger">{errors.email.message}</small>
+            )}
           </Form.Group>
         </Row>
 
@@ -72,13 +90,22 @@ const form = () => {
             <Form.Label>Telefone: </Form.Label>
             <Form.Control
               type="tel"
-              {...register("telefone", { maxLength: 15 })}
+              {...register("telefone", alunoValidator.telefone)}
             />
+            {errors.telefone && (
+              <small className="text-danger">{errors.telefone.message}</small>
+            )}
           </Form.Group>
 
           <Form.Group as={Col} controlId="cep">
             <Form.Label>CEP: </Form.Label>
-            <Form.Control type="text" {...register("cep", { maxLength: 11 })} />
+            <Form.Control
+              type="text"
+              {...register("cep", alunoValidator.cep)}
+            />
+            {errors.cep && (
+              <small className="text-danger">{errors.cep.message}</small>
+            )}
           </Form.Group>
         </Row>
         <Row className="mb-3">
@@ -86,16 +113,24 @@ const form = () => {
             <Form.Label>Logradouro: </Form.Label>
             <Form.Control
               type="text"
-              {...register("logradouro", { maxLength: 100 })}
+              {...register("logradouro", alunoValidator.logradouro)}
             />
+            {errors.logradouro && (
+              <small className="text-danger">{errors.logradouro.message}</small>
+            )}
           </Form.Group>
 
           <Form.Group as={Col} controlId="complemento">
             <Form.Label>Complemento: </Form.Label>
             <Form.Control
               type="text"
-              {...register("complemento", { maxLength: 100 })}
+              {...register("complemento", alunoValidator.complemento)}
             />
+            {errors.complemento && (
+              <small className="text-danger">
+                {errors.complemento.message}
+              </small>
+            )}
           </Form.Group>
         </Row>
         <Row className="mb-3">
@@ -103,16 +138,22 @@ const form = () => {
             <Form.Label>Numero: </Form.Label>
             <Form.Control
               type="text"
-              {...register("numero", { maxLength: 20 })}
+              {...register("numero", alunoValidator.numero)}
             />
+            {errors.numero && (
+              <small className="text-danger">{errors.numero.message}</small>
+            )}
           </Form.Group>
 
           <Form.Group as={Col} controlId="bairro">
             <Form.Label>Bairro: </Form.Label>
             <Form.Control
               type="text"
-              {...register("bairro", { maxLength: 100 })}
+              {...register("bairro", alunoValidator.bairro)}
             />
+            {errors.bairro && (
+              <small className="text-danger">{errors.bairro.message}</small>
+            )}
           </Form.Group>
         </Row>
 
