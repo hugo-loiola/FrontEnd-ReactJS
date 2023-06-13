@@ -3,7 +3,7 @@ import axios from "axios";
 import Link from "next/link";
 import { useRouter } from "next/router";
 import React, { useState } from "react";
-import { Button, Form } from "react-bootstrap";
+import { Button, Col, Form, Row } from "react-bootstrap";
 import { useForm } from "react-hook-form";
 import { BsArrowLeftCircleFill, BsCheck2 } from "react-icons/bs";
 
@@ -19,15 +19,16 @@ const form = () => {
   return (
     <Pagina titulo="Cursos">
       <Form>
-        <Form.Group className="mb-3" controlId="nome">
-          <Form.Label>Nome: </Form.Label>
-          <Form.Control type="text" {...register("nome")} />
-        </Form.Group>
-
-        <Form.Group className="mb-3" controlId="duracao">
-          <Form.Label>Duração: </Form.Label>
-          <Form.Control type="text" {...register("duracao")} />
-        </Form.Group>
+        <Row className="mb-3">
+          <Form.Group as={Col} controlId="nome">
+            <Form.Label>Nome: </Form.Label>
+            <Form.Control type="text" {...register("nome")} />
+          </Form.Group>
+          <Form.Group as={Col} controlId="duracao">
+            <Form.Label>Duração: </Form.Label>
+            <Form.Control type="text" {...register("duracao")} />
+          </Form.Group>
+        </Row>
 
         <Form.Group className="mb-3" controlId="modalidade">
           <Form.Label>Modalidade: </Form.Label>

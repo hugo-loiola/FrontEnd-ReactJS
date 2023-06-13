@@ -3,7 +3,7 @@ import axios from "axios";
 import Link from "next/link";
 import { useRouter } from "next/router";
 import React, { useEffect, useState } from "react";
-import { Button, Form } from "react-bootstrap";
+import { Button, Col, Form, Row } from "react-bootstrap";
 import { useForm } from "react-hook-form";
 import { BsArrowLeftCircleFill, BsCheck2 } from "react-icons/bs";
 
@@ -35,22 +35,23 @@ const form = () => {
   return (
     <Pagina titulo="Disciplina">
       <Form>
-        <Form.Group className="mb-3" controlId="nome">
-          <Form.Label>Nome: </Form.Label>
-          <Form.Control type="text" {...register("nome")} />
-        </Form.Group>
+        <Row className="mb-3">
+          <Form.Group as={Col} controlId="nome">
+            <Form.Label>Nome: </Form.Label>
+            <Form.Control type="text" {...register("nome")} />
+          </Form.Group>
 
-        <Form.Group className="mb-3" controlId="curso">
-          <Form.Label>Curso: </Form.Label>
-          <Form.Select {...register("curso")}>
-            {cursos.map((item) => (
-              <option value={item.nome} key={item.id}>
-                {item.nome}
-              </option>
-            ))}
-          </Form.Select>
-        </Form.Group>
-
+          <Form.Group as={Col} controlId="curso">
+            <Form.Label>Curso: </Form.Label>
+            <Form.Select {...register("curso")}>
+              {cursos.map((item) => (
+                <option value={item.nome} key={item.id}>
+                  {item.nome}
+                </option>
+              ))}
+            </Form.Select>
+          </Form.Group>
+        </Row>
         <div className="text-center">
           <Button variant="success" onClick={handleSubmit(salvar)}>
             <BsCheck2 className="me-1" />
