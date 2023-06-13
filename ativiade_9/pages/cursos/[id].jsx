@@ -1,4 +1,5 @@
 import Pagina from "@/components/Pagina";
+import cursoValidator from "@/validators/cursosValidators";
 import axios from "axios";
 import Link from "next/link";
 import { useRouter } from "next/router";
@@ -9,7 +10,12 @@ import { BsArrowLeftCircleFill, BsCheck2 } from "react-icons/bs";
 
 const form = () => {
   const { push, query } = useRouter();
-  const { register, handleSubmit, setValue } = useForm();
+  const {
+    register,
+    handleSubmit,
+    setValue,
+    formState: { errors },
+  } = useForm();
 
   useEffect(() => {
     if (query.id) {
@@ -36,15 +42,21 @@ const form = () => {
             <Form.Label>Nome: </Form.Label>
             <Form.Control
               type="text"
-              {...register("nome", { required: true, maxLength: 50 })}
+              {...register("nome", cursoValidator.nome)}
             />
+            {errors.nome && (
+              <small className="text-danger">{errors.nome.message}</small>
+            )}
           </Form.Group>
           <Form.Group as={Col} controlId="duracao">
             <Form.Label>Duração: </Form.Label>
             <Form.Control
               type="number"
-              {...register("duracao", { required: false, max: 11 })}
+              {...register("duracao", cursoValidator.duracao)}
             />
+            {errors.duracao && (
+              <small className="text-danger">{errors.duracao.message}</small>
+            )}
           </Form.Group>
         </Row>
 
@@ -52,8 +64,11 @@ const form = () => {
           <Form.Label>Modalidade: </Form.Label>
           <Form.Control
             type="text"
-            {...register("modalidade", { required: true, maxLength: 1 })}
+            {...register("modalidade", cursoValidator.modalidade)}
           />
+          {errors.modalidade && (
+            <small className="text-danger">{errors.modalidade.message}</small>
+          )}
         </Form.Group>
 
         <div className="text-center">
