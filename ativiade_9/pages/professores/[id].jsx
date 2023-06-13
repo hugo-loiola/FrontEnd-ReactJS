@@ -53,7 +53,7 @@ const form = () => {
           <Form.Group as={Col} controlId="matricula">
             <Form.Label>Matricula: </Form.Label>
             <Form.Control
-              type="number"
+              type="text"
               {...register("matricula", { maxLength: 20 })}
             />
           </Form.Group>

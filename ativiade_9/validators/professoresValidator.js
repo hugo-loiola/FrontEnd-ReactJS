@@ -12,13 +12,16 @@ const professorValidator = {
   },
   cpf: {
     required: "O campo é obrigatório",
-    regex: /^\d{3}\.\d{3}\.\d{3}\-\d{2}$/,
+    pattern: {
+      value: /^\d{3}\.\d{3}\.\d{3}\-\d{2}$/,
+      message: "O CPF está incorreto",
+    },
   },
   matricula: {
     required: "O campo é obrigatório",
     minLength: {
-      value: 3,
-      message: "A quantidade de caracteres mínima é 3",
+      value: 5,
+      message: "A quantidade de caracteres mínima é 5",
     },
     maxLength: {
       value: 50,
@@ -27,47 +30,26 @@ const professorValidator = {
   },
   salario: {
     required: "O campo é obrigatório",
-    min: {
-      value: 1320,
-      message: "O valor mínimo é 1320",
-    },
-    max: {
-      value: 999999,
-      message: "O valor máximo é 999999",
-    },
+    min: { value: 1320, message: "Mínimo de R$1320,00" },
+    max: { value: 40000, message: "Máximo de R$40.000,00" },
   },
   email: {
     required: "O campo é obrigatório",
-    minLength: {
-      value: 3,
-      message: "A quantidade de caracteres mínima é 3",
-    },
-    maxLength: {
-      value: 50,
-      message: "A quantidade de caracteres máxima é 50",
+    pattern: {
+      value: /^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$/,
+      message: "Email incorreto",
     },
   },
   telefone: {
     required: "O campo é obrigatório",
-    minLength: {
-      value: 3,
-      message: "A quantidade de caracteres mínima é 3",
-    },
-    maxLength: {
-      value: 50,
-      message: "A quantidade de caracteres máxima é 50",
+    pattern: {
+      value: /^\([1-9]{2}\) (?:[2-8]|9[1-9])[0-9]{3}\-[0-9]{4}$/,
+      message: "Telefone -> (xx) xxxxx-xxxx",
     },
   },
   cep: {
     required: "O campo é obrigatório",
-    minLength: {
-      value: 3,
-      message: "A quantidade de caracteres mínima é 3",
-    },
-    maxLength: {
-      value: 50,
-      message: "A quantidade de caracteres máxima é 50",
-    },
+    pattern: { value: /\d{5}-\d{3}/, message: "CEP incorreto" },
   },
   logradouro: {
     required: "O campo é obrigatório",
@@ -94,12 +76,12 @@ const professorValidator = {
   numero: {
     required: "O campo é obrigatório",
     minLength: {
-      value: 3,
-      message: "A quantidade de caracteres mínima é 3",
+      value: 1,
+      message: "A quantidade de caracteres mínima é 1",
     },
     maxLength: {
-      value: 50,
-      message: "A quantidade de caracteres máxima é 50",
+      value: 5,
+      message: "A quantidade de caracteres máxima é 5",
     },
   },
   bairro: {
