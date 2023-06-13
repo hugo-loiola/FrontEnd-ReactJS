@@ -38,12 +38,15 @@ const form = () => {
         <Row className="mb-3">
           <Form.Group as={Col} controlId="nome">
             <Form.Label>Nome: </Form.Label>
-            <Form.Control type="text" {...register("nome")} />
+            <Form.Control
+              type="text"
+              {...register("nome", { required: true, maxLength: 50 })}
+            />
           </Form.Group>
 
           <Form.Group as={Col} controlId="curso">
             <Form.Label>Curso: </Form.Label>
-            <Form.Select {...register("curso")}>
+            <Form.Select {...register("curso", { required: true })}>
               {cursos.map((item) => (
                 <option value={item.nome} key={item.id}>
                   {item.nome}
@@ -52,6 +55,7 @@ const form = () => {
             </Form.Select>
           </Form.Group>
         </Row>
+
         <div className="text-center">
           <Button variant="success" onClick={handleSubmit(salvar)}>
             <BsCheck2 className="me-1" />
