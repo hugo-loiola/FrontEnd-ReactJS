@@ -21,18 +21,27 @@ const form = () => {
       <Form>
         <Form.Group className="mb-3" controlId="nome">
           <Form.Label>Nome: </Form.Label>
-          <Form.Control type="text" {...register("nome")} />
+          <Form.Control
+            type="text"
+            {...register("nome", { required: true, maxLength: 50 })}
+          />
         </Form.Group>
 
         <Row className="mb-3">
           <Form.Group as={Col} controlId="dataInicio">
             <Form.Label>Data de Início: </Form.Label>
-            <Form.Control type="date" {...register("dataInicio")} />
+            <Form.Control
+              type="date"
+              {...register("dataInicio", { required: true })}
+            />
           </Form.Group>
 
           <Form.Group as={Col} controlId="dataFim">
             <Form.Label>Data Final: </Form.Label>
-            <Form.Control type="date" {...register("dataFim")} />
+            <Form.Control
+              type="date"
+              {...register("dataFim", { required: true })}
+            />
           </Form.Group>
         </Row>
 
