@@ -34,18 +34,26 @@ const form = () => {
         <Row className="mb-3">
           <Form.Group as={Col} controlId="nome">
             <Form.Label>Nome: </Form.Label>
-            <Form.Control type="text" {...register("nome")} />
+            <Form.Control
+              type="text"
+              {...register("nome", { required: true, maxLength: 50 })}
+            />
           </Form.Group>
-
-          <Form.Group as={Col} className="mb-3" controlId="duracao">
+          <Form.Group as={Col} controlId="duracao">
             <Form.Label>Duração: </Form.Label>
-            <Form.Control type="text" {...register("duracao")} />
+            <Form.Control
+              type="number"
+              {...register("duracao", { required: false, max: 11 })}
+            />
           </Form.Group>
         </Row>
 
         <Form.Group className="mb-3" controlId="modalidade">
           <Form.Label>Modalidade: </Form.Label>
-          <Form.Control type="text" {...register("modalidade")} />
+          <Form.Control
+            type="text"
+            {...register("modalidade", { required: true, maxLength: 1 })}
+          />
         </Form.Group>
 
         <div className="text-center">
