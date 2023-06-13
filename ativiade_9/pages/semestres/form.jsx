@@ -1,4 +1,5 @@
 import Pagina from "@/components/Pagina";
+import semestreValidator from "@/validators/semestresValidators";
 import axios from "axios";
 import Link from "next/link";
 import { useRouter } from "next/router";
@@ -9,7 +10,11 @@ import { BsArrowLeftCircleFill, BsCheck2 } from "react-icons/bs";
 
 const form = () => {
   const { push } = useRouter();
-  const { register, handleSubmit } = useForm();
+  const {
+    register,
+    handleSubmit,
+    formState: { errors },
+  } = useForm();
 
   function salvar(dados) {
     axios.post("/api/semestres", dados);
@@ -23,8 +28,11 @@ const form = () => {
           <Form.Label>Nome: </Form.Label>
           <Form.Control
             type="text"
-            {...register("nome", { required: true, maxLength: 50 })}
+            {...register("nome", semestreValidator.nome)}
           />
+          {errors.nome && (
+            <small className="text-danger">{errors.nome.message}</small>
+          )}
         </Form.Group>
 
         <Row className="mb-3">
@@ -32,16 +40,22 @@ const form = () => {
             <Form.Label>Data de Início: </Form.Label>
             <Form.Control
               type="date"
-              {...register("dataInicio", { required: true })}
+              {...register("dataInicio", semestreValidator.dataInicio)}
             />
+            {errors.dataInicio && (
+              <small className="text-danger">{errors.dataInicio.message}</small>
+            )}
           </Form.Group>
 
           <Form.Group as={Col} controlId="dataFim">
             <Form.Label>Data Final: </Form.Label>
             <Form.Control
               type="date"
-              {...register("dataFim", { required: true })}
+              {...register("dataFim", semestreValidator.dataFim)}
             />
+            {errors.dataFim && (
+              <small className="text-danger">{errors.dataFim.message}</small>
+            )}
           </Form.Group>
         </Row>
 
