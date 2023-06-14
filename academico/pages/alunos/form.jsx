@@ -6,14 +6,22 @@ import React from "react";
 import { Button, Col, Form, Row } from "react-bootstrap";
 import { useForm } from "react-hook-form";
 import { BsArrowLeftCircleFill, BsCheck2 } from "react-icons/bs";
+import { mask } from "remask";
 
 const form = () => {
   const { push } = useRouter();
-  const { register, handleSubmit } = useForm();
+  const { register, handleSubmit, setValue } = useForm();
 
   function salvar(dados) {
     axios.post("/api/alunos", dados);
     push("/alunos");
+  }
+
+  function handleChange(event) {
+    const name = event.target.name;
+    const value = event.target.value;
+    const mascara = event.target.getAttribute("mask");
+    setValue(name, mask(value, mascara));
   }
 
   return (
@@ -22,17 +30,16 @@ const form = () => {
         <Row className="mb-3">
           <Form.Group as={Col} controlId="nome">
             <Form.Label>Nome: </Form.Label>
-            <Form.Control
-              type="text"
-              {...register("nome", { required: true, maxLength: 50 })}
-            />
+            <Form.Control type="text" {...register("nome")} />
           </Form.Group>
 
           <Form.Group as={Col} controlId="cpf">
             <Form.Label>CPF: </Form.Label>
             <Form.Control
               type="text"
-              {...register("cpf", { required: true, maxLength: 20 })}
+              mask="999.999.999-99"
+              {...register("cpf")}
+              onChange={handleChange}
             />
           </Form.Group>
         </Row>
@@ -40,10 +47,7 @@ const form = () => {
         <Row className="mb-3">
           <Form.Group as={Col} controlId="matricula">
             <Form.Label>Matricula: </Form.Label>
-            <Form.Control
-              type="text"
-              {...register("matricula", { required: true, maxLength: 20 })}
-            />
+            <Form.Control type="text" {...register("matricula")} />
           </Form.Group>
 
           <Form.Group as={Col} controlId="email">
@@ -60,13 +64,20 @@ const form = () => {
             <Form.Label>Telefone: </Form.Label>
             <Form.Control
               type="tel"
-              {...register("telefone", { maxLength: 15 })}
+              mask="(99) 99999-9999"
+              {...register("telefone")}
+              onChange={handleChange}
             />
           </Form.Group>
 
           <Form.Group as={Col} controlId="cep">
             <Form.Label>CEP: </Form.Label>
-            <Form.Control type="text" {...register("cep", { maxLength: 11 })} />
+            <Form.Control
+              type="text"
+              mask="99999-999"
+              {...register("cep")}
+              onChange={handleChange}
+            />
           </Form.Group>
         </Row>
         <Row className="mb-3">
