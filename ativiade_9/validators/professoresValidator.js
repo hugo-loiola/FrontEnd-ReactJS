@@ -42,10 +42,6 @@ const professorValidator = {
   },
   telefone: {
     required: "O campo é obrigatório",
-    pattern: {
-      value: /^\([1-9]{2}\) (?:[2-8]|9[1-9])[0-9]{3}\-[0-9]{4}$/,
-      message: "Telefone -> (xx) xxxxx-xxxx",
-    },
   },
   cep: {
     required: "O campo é obrigatório",

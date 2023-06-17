@@ -14,6 +14,7 @@ const form = () => {
   const {
     register,
     handleSubmit,
+    setValue,
     formState: { errors },
   } = useForm();
 
@@ -48,8 +49,9 @@ const form = () => {
             <Form.Label>CPF: </Form.Label>
             <Form.Control
               type="text"
-              mask
+              mask="999.999.999-99"
               {...register("cpf", alunoValidator.cpf)}
+              onChange={handleChange}
             />
             {errors.cpf && (
               <small className="text-danger">{errors.cpf.message}</small>
@@ -86,7 +88,9 @@ const form = () => {
             <Form.Label>Telefone: </Form.Label>
             <Form.Control
               type="tel"
+              mask="(99) 99999-9999"
               {...register("telefone", alunoValidator.telefone)}
+              onChange={handleChange}
             />
             {errors.telefone && (
               <small className="text-danger">{errors.telefone.message}</small>
@@ -97,6 +101,7 @@ const form = () => {
             <Form.Label>CEP: </Form.Label>
             <Form.Control
               type="text"
+              mask="99999-999"
               {...register("cep", alunoValidator.cep)}
             />
             {errors.cep && (

@@ -7,6 +7,7 @@ import React, { useEffect } from "react";
 import { Button, Col, Form, Row } from "react-bootstrap";
 import { useForm } from "react-hook-form";
 import { BsArrowLeftCircleFill, BsCheck2 } from "react-icons/bs";
+import { mask } from "remask";
 
 const form = () => {
   const { push, query } = useRouter();
@@ -34,6 +35,13 @@ const form = () => {
     push("/alunos");
   }
 
+  function handleChange(event) {
+    const name = event.target.name;
+    const value = event.target.value;
+    const mascara = event.target.getAttribute("mask");
+    setValue(name, mask(value, mascara));
+  }
+
   return (
     <Pagina titulo="Aluno">
       <Form>
@@ -53,7 +61,9 @@ const form = () => {
             <Form.Label>CPF: </Form.Label>
             <Form.Control
               type="text"
+              mask="999.999.999-99"
               {...register("cpf", alunoValidator.cpf)}
+              onChange={handleChange}
             />
             {errors.cpf && (
               <small className="text-danger">{errors.cpf.message}</small>
@@ -90,7 +100,9 @@ const form = () => {
             <Form.Label>Telefone: </Form.Label>
             <Form.Control
               type="tel"
+              mask="(99) 99999-9999"
               {...register("telefone", alunoValidator.telefone)}
+              onChange={handleChange}
             />
             {errors.telefone && (
               <small className="text-danger">{errors.telefone.message}</small>
@@ -101,6 +113,7 @@ const form = () => {
             <Form.Label>CEP: </Form.Label>
             <Form.Control
               type="text"
+              mask="99999-999"
               {...register("cep", alunoValidator.cep)}
             />
             {errors.cep && (
